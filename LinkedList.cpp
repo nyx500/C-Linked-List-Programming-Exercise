@@ -34,11 +34,12 @@ void LinkedList::insertSorted(LinkedList::Node*& _head,int _value){
     Node* tmp = _head;
     //cout << "Debug3: printing data value of tmp --> " << tmp->data << endl;
 
-    //// If the list is empty, insert the node in the first position
+    // If the list is empty, insert the node in the first position
     if (tmp == NULL)
     {
         head = newNode;
     }
+    // List is not empty...
     else
     {  
         if (tmp->data >= _value)
