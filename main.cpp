@@ -50,6 +50,23 @@ int main()
     std::cout << "Looking for the number 25... should be in index 12. INDEX: " << my_list.search(my_list.getHead(), 25) << std::endl;
     std::cout << "Looking for the number 49... should be in index -1. INDEX: " << my_list.search(my_list.getHead(), 49) << std::endl;
     std::cout << "***************************************************************************************************" << std::endl;
-   
+    std::cout << std::endl;
+
+    // Testing removing elements
+    std::cout << "***************************************************************************************************" << std::endl;
+    my_list.remove(my_list.getHead(), -10);
+    my_list.display(my_list.getHead());
+    std::cout << std::endl;
+    my_list.remove(my_list.getHead(), 14);
+    my_list.display(my_list.getHead());
+    std::cout << std::endl;
+    my_list.remove(my_list.getHead(), -5);
+    my_list.display(my_list.getHead());
+    std::cout << std::endl;
+    my_list.remove(my_list.getHead(), 25);
+    my_list.display(my_list.getHead());
+    std::cout << "***************************************************************************************************" << std::endl;
+    std::cout << std::endl;
+
     return 0;
 }

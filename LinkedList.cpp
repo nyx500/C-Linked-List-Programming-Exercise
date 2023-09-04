@@ -116,8 +116,43 @@ int LinkedList::search(LinkedList::Node*& _head,int _value){
     return -1;
 }
 
-void LinkedList::remove(LinkedList::Node*& _head,int _value){
-    
+/**  This method removes element _value from the list pointed to by head. If there is more than one element equal to _value, only the first element is removed  */
+void LinkedList::remove(LinkedList::Node*& _head,int _value)
+{
+    Node* tmp = _head;
+
+    // Only do this if list is not empty...
+    if (tmp != NULL)
+    {   
+        // First Node has data-field set to value:
+        if (tmp->data == _value)
+        {   
+            // Set head (reference) to the next-field in the first node's pointer field and delete the tmp node
+            _head = tmp->next;
+            delete tmp;
+        }
+        else
+        {
+            // Initialize previous and to-be-deleted pointers
+            Node* prev = tmp;
+            tmp = tmp->next;
+
+            // Only continue until end of the list
+            while (tmp != NULL)
+            {
+                if (tmp->data == _value)
+                {   
+                    // If value is found, then set next-field  of the previous Node to the next-field of the tmp node
+                    prev->next = tmp->next;
+                    break;
+                }
+                // If value not found, go on traversing the list
+                prev = tmp;
+                tmp = tmp->next;
+            }
+            
+        }
+    }
 }
 
 // & means 'pass by reference', so here we must pass a reference to the head pointer
