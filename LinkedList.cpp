@@ -27,12 +27,9 @@ void LinkedList::insertSorted(LinkedList::Node*& _head,int _value){
 
     // Create the new node with 'NULL' in the data field
     struct Node* newNode = new Node{ _value, NULL };
-    cout << "Debug1:  printing data value of newNode --> " << newNode->data << endl;
-    cout << "Debug1:  printing 'next' value of newNode --> " << newNode->next << endl;
 
     // Copy the address in head into the 'tmp' pointer
     Node* tmp = _head;
-    //cout << "Debug3: printing data value of tmp --> " << tmp->data << endl;
 
     // If the list is empty, insert the node in the first position
     if (tmp == NULL)
@@ -41,27 +38,38 @@ void LinkedList::insertSorted(LinkedList::Node*& _head,int _value){
     }
     // List is not empty...
     else
-    {  
+    {   
+        // Check if first Node in the list contains a data value which is greater-than-or-equal to the value-to-insert
         if (tmp->data >= _value)
-        {
-            newNode->next = tmp;
-            head = newNode;
+        {   
+            // If value-in-first-node is greater than or equal to it, then insert the new node at the beginning of the list
+            newNode->next = tmp; // Make newNode point to the first node in the list
+            head = newNode; // Make the head ptr point to the new node (address)
         }
+        // If first node is smaller than the inputted value-to-add, then continue to traverse the list...s
         else
-        {
+        {   
+            // Intialisation of previous and temp node pointers: temp will end up pointing to the address of the node
+            // that must go AFTER the new node, and prev should point to the address of the node that goes before.
             Node* previous_node = tmp;
             tmp = tmp->next;
 
+            // Traverse through the list until tmp stores the NULL address...
             while (tmp != NULL)
             {   
+                // Stop iterating if the data-value in 'tmp' is larger than (or equal to) the value-to-be-inserted!
                 if (tmp->data >= _value)
                 {
                     break;
                 }
+                
+                // If the data-value in the Node pointed to by 'tmp' is smaller than the new value, keep on traversing.
                 previous_node = tmp;    
                 tmp = tmp->next;
             }
 
+            // Now the loop is complete, tmp should EITHER point to the first number greater than or equal to the _value,
+            // or if no greater number than _value was found in the list, it should point to NULL.
             newNode->next = tmp;
             previous_node->next = newNode;
         }
@@ -101,11 +109,9 @@ void LinkedList::display(LinkedList::Node*& _head){
     
     while(iterator!=NULL)
     {   
-        cout<<"Printing the list..." << endl;
         cout << "[" + std::to_string(iterator->data) + "] ";
         iterator=iterator->next;
     }
-    cout << endl;
 }
 
 LinkedList::Node*& LinkedList::getHead(){
