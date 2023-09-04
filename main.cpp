@@ -31,9 +31,25 @@ int main()
     my_list.insertSorted(my_list.getHead(), 14);
     my_list.insertSorted(my_list.getHead(), 25);
     // Check the length of the list
+    std::cout << std::endl;
     std::cout << "Length of list: " << my_list.length(my_list.getHead()) << std::endl;
+    std::cout << std::endl;
+    std::cout << "***************************************************************************************************" << std::endl;
+    std::cout << std::endl;
     std::cout << "List:" << std::endl;
     my_list.display(my_list.getHead());
+    std::cout << std::endl;
+    std::cout << "***************************************************************************************************" << std::endl;
+    std::cout << std::endl;
+
+    // Now test the 'search' function
+    std::cout << std::endl;
+    std::cout << "***************************************************************************************************" << std::endl;
+    std::cout << "Looking for the number 3... should be in index 4. INDEX: " << my_list.search(my_list.getHead(), 3) << std::endl;
+    std::cout << "Looking for the number -10... should be in index 0. INDEX: " << my_list.search(my_list.getHead(), -10) << std::endl;
+    std::cout << "Looking for the number 25... should be in index 12. INDEX: " << my_list.search(my_list.getHead(), 25) << std::endl;
+    std::cout << "Looking for the number 49... should be in index -1. INDEX: " << my_list.search(my_list.getHead(), 49) << std::endl;
+    std::cout << "***************************************************************************************************" << std::endl;
    
     return 0;
 }

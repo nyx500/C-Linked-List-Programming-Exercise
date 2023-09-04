@@ -92,9 +92,30 @@ int LinkedList::length(LinkedList::Node*& _head){
     return counter;
 }
 
+/* Returns where element x is in the list pointed to by head. If there is >1 position where x is, returns the 1st position. If not found, return -1. */
 int LinkedList::search(LinkedList::Node*& _head,int _value){
+    
+    Node* tmp = _head;
+    
+    // First iteration of the while-loop means head doesn't point to NULL --> set position/index counter to 0 (1st element).
+    int position = 0;
+    // Iterate over the list
+    while (tmp != NULL)
+    {   
+        if (tmp->data == _value)
+        {
+            return position;
+        }
+        // Go to next Node by updating temp
+        tmp = tmp->next;
+        // Update the position counter
+        ++position;
+    }
+
+    // Element not found during running of while-loop (or while loop didn't run at all due to the fact head pointed to NULL)
     return -1;
 }
+
 void LinkedList::remove(LinkedList::Node*& _head,int _value){
     
 }
